@@ -12,6 +12,7 @@ import { AuthGuard } from 'src/auth/guard';
 
 // Overview
 const IndexPage = lazy(() => import('src/pages/dashboard'));
+const OverviewCommunityForm = lazy(() => import('src/pages/dashboard/forum')); // changed but not showing on UI i forgot what was missing
 const OverviewEcommercePage = lazy(() => import('src/pages/dashboard/ecommerce'));
 const OverviewAnalyticsPage = lazy(() => import('src/pages/dashboard/analytics'));
 const OverviewBankingPage = lazy(() => import('src/pages/dashboard/banking'));
@@ -82,6 +83,7 @@ export const dashboardRoutes = [
     element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
     children: [
       { element: <IndexPage />, index: true },
+      {path : 'forum', element: <OverviewCommunityForm />},
       { path: 'ecommerce', element: <OverviewEcommercePage /> },
       { path: 'analytics', element: <OverviewAnalyticsPage /> },
       { path: 'banking', element: <OverviewBankingPage /> },
